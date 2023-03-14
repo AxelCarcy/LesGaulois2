@@ -29,6 +29,9 @@ public class Romain
 	
 	public void recevoirCoup(int forceCoup)
 	{
+		// précondition
+		assert force > 0;
+		int oldForce = force;
 		force -= forceCoup;
 		if (force > 0)
 		{
@@ -38,11 +41,13 @@ public class Romain
 		{
 			parler("J'abandonne");
 		}
+		// post condition la force a diminuée
+		assert force < oldForce;
 	}
 	
 	public static void main(String[] args)
 	{
-		Romain mouludus = new Romain("Mouludus", 2);
+		Romain mouludus = new Romain("Mouludus", 6);
 		
 		mouludus.prendreParole();
 		mouludus.parler("Bonjour");
